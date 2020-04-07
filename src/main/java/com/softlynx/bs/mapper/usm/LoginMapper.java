@@ -23,7 +23,7 @@ public interface LoginMapper {
 	@Select("SELECT count(*) FROM users WHERE enabled = 1 and username like concat('%',#{username},'%')")
 	public abstract int ifUserExists(@Param("username") String username);
 	
-	@Insert("INSERT INTO users (username, password, enabled) VALUES (#{username}, #{password}, #{enabled})")
+	@Insert("INSERT INTO users (username, password, authority, enabled) VALUES (#{username}, #{password}, #{authority}, #{enabled})")
     //@Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
 	public abstract void insertUser(Users users);
 	

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	
+	<config-name>SoftBSConfig</config-name>
+	
+	<!-- ====================================================== -->
+	<!-- running a zk application in a CLUSTER -->
+	<!-- ====================================================== -->
+	<system-config>
+		<!-- Enable event thread for modal windows -->
+		<disable-event-thread>true</disable-event-thread> <!-- true for better performance and lower resource usage -->
+		<!-- Enable Cluster environment -->
+		<ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
+		<cache-provider-class>org.zkoss.zk.ui.impl.GlobalDesktopCacheProvider</cache-provider-class>
+	</system-config>
+
+	<!-- ====================================================== -->
+	<!-- Listener to make sure servlet thread -->
+	<!-- and ZK event thread got the same ThreadLocal values. -->
+	<!-- ====================================================== -->
+	<listener>
+		<description>ThreadLocal Synchronization Listener</description>
+		<listener-class>org.zkoss.zkplus.util.ThreadLocalListener</listener-class>
+	</listener>
+
+	<!-- ====================================================== -->
+	<!-- the following listener is used to see # of sessions, desktops -->
+	<!-- ====================================================== -->
+	<listener>
+		<description>[Optional] Mointor the statistic</description>
+		<listener-class>org.zkoss.zk.ui.util.Statistic</listener-class>
+	</listener>
+	
+	<!-- 
+	<listener>
+		<listener-class>com.softlynx.bs.common.base.SoftDesktopRecycle</listener-class>
+	</listener>
+	 -->
+	
+	<!-- [ZK EE]
+		Turn on if you want to recycle the desktop if an user navigates
+		back to the same URL
+	<listener>
+		<listener-class>org.zkoss.zkmax.ui.util.DesktopRecycle</listener-class>
+	</listener>
+	--> 
+	
+	<!-- enable websockets in ZKEE
+	<listener>
+	    <listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>
+	</listener>
+	-->
+	
+	<!-- enable InaccessibleWidgetBlockService in ZKEE, or define your own class
+	<listener>
+		<listener-class>org.zkoss.zkmax.au.InaccessibleWidgetBlockService$DesktopInit</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.softlynx.bs.common.cbc.security.SoftBlockService</listener-class>
+	</listener>
+	 -->
+
+	<!-- ====================================================== -->
+	<!-- Maximal count of desktops which a session can hold -->
+	<!-- ====================================================== -->
+	<session-config>
+		<device-type>ajax</device-type>
+		<automatic-timeout/> <!-- the same as <automatic-timeout>true</automatic-timeout> -->
+		<max-desktops-per-session>10</max-desktops-per-session> <!-- Next 2 features to prevent against DoS attack -->
+		<max-requests-per-session>-1</max-requests-per-session> <!-- negative value means no limitation -->
+		<timer-keep-alive>true</timer-keep-alive>
+	</session-config>
+
+	<!--  false to use compress js which is much smaller. change to true if you need to debug -->
+	<client-config>
+		<processing-prompt-delay>500</processing-prompt-delay>
+		<!-- Turn on if you want to ignore the consecutive click events, if it happens 
+			too close to the previous one, or the server is still serving the previous click. -->
+		<click-filter-delay>390</click-filter-delay>
+		<!-- It specifies whether to debug JavaScript files, set to false for production -->
+		<debug-js>true</debug-js>
+		<disable-behind-modal>false</disable-behind-modal>
+	    <error-reload>
+	        <device-type>ajax</device-type>
+	        <error-code>301</error-code>
+	        <reload-uri></reload-uri>
+	    </error-reload>
+	    <keep-across-visits>true</keep-across-visits>
+	    <processing-prompt-delay>900</processing-prompt-delay>
+	    <tooltip-delay>800</tooltip-delay>
+	    <resend-delay>9000</resend-delay>
+		<!-- New Features of ZK 8.5.0 -->
+	    <enable-source-map>true</enable-source-map>
+	</client-config>
+	
+	<desktop-config>
+	    <desktop-timeout>-1</desktop-timeout>
+	    <!-- ZK caches the parsed result of a ZUML page and re-compiles it only if it is modified, increase this value in production environment -->
+	    <file-check-period>600</file-check-period>
+	</desktop-config>
+	
+	<device-config>	
+		<device-type>ajax</device-type>
+		<!-- An empty URL can cause the browser to reload the same URL -->
+		<timeout-uri>/timeout.zul</timeout-uri>
+		<!-- 
+		    Enable Event Queues and Server Push 
+		    when ZKEE, Use Comet for server push instead of Polling
+		    <server-push-class>org.zkoss.zk.ui.impl.PollingServerPush</server-push-class>
+			<server-push-class>org.zkoss.zkex.ui.comet.CometServerPush</server-push-class>
+		 -->
+		<server-push-class>org.zkoss.zk.ui.impl.PollingServerPush</server-push-class>		
+	</device-config>
+
+	<!-- 
+	<richlet-mapping>
+		<richlet-name>SoftRichlet</richlet-name>
+		<url-pattern>/zk/soft/*</url-pattern>
+	</richlet-mapping>
+	 -->
+
+	<!-- 
+	<error-page>
+		<exception-type>org.springframework.security.access.AccessDeniedException</exception-type>
+		<location>/zul/accessdenied.zul</location>
+	</error-page>
+	 -->
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>error.zul</location>
+	</error-page> 
+
+	<system-property>
+		<name>org.zkoss.zel.impl.parser.SKIP_IDENTIFIER_CHECK</name>
+		<value>true</value>
+	</system-property>
+	
+	<preference>
+    	<name>org.zkoss.zk.ui.WebApp.name</name>
+    	<value>SoftBS</value>
+	</preference>
+	
+	<library-property>
+    	<name>org.zkoss.web.preferred.locale</name>
+    	<value>en</value>
+	</library-property>
+	
+	<!-- ====================================================== -->
+	<!-- selecting widget UI theme,iceblue_c as default in v8.6 -->
+	<!-- ====================================================== -->
+	<library-property>
+		<name>org.zkoss.theme.preferred</name>
+		<value>sapphire</value>
+	</library-property>
+	
+	<!-- ====================================================== -->
+	<!-- Define the font size and family -->
+	<!-- ====================================================== -->
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeM</name>
+		<value>11px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeS</name>
+		<value>10px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeXS</name>
+		<value>9px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeMS</name>
+		<value>11px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontFamilyT</name>
+		<value>Verdana, Tahoma, Arial, Helvetica, sans-serif</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontFamilyC</name>
+		<value>Verdana, Tahoma, Arial, Helvetica, sans-serif</value>
+	</library-property>
+	<!-- default, trendy, os, bs -->
+	<library-property>
+		<name>org.zkoss.zul.Button.mold</name>
+		<value>trendy</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.Menupopup.mold</name>
+		<value>trendy</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zkmax.zul.Navbar.mold</name>
+		<value>trendy</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.Paging.mold</name>
+		<value>trendy</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.Panel.mold</name>
+		<value>trendy</value>
+	</library-property>
+	<!-- turn off borderlayout animation -->	
+	<library-property>
+    	<name>org.zkoss.zul.borderlayout.animation.disabled</name>
+    	<value>true</value>
+	</library-property>
+	<library-property>
+       <name>org.zkoss.zk.ui.EventListener.duplicateIgnored</name>
+       <value>true</value>
+    </library-property>
+    <library-property>
+    	<name>org.zkoss.zul.nativebar</name>
+    	<value>true</value>
+    </library-property>
+	<!-- Hide zk version in ZUL pages -->
+	<library-property>
+		<name>org.zkoss.zk.ui.versionInfo.enabled</name>
+		<value>false</value>
+	</library-property>
+	
+	<!-- ====================================================== -->
+	<!-- Displays the wait indicator on every user action -->
+	<!-- and sets the position -->
+	<!-- ====================================================== -->
+	<library-property>
+		<name>org.zkoss.zul.progressbox.position</name>
+		<value>center,center</value>
+	</library-property>
+	
+	<!-- [ZK EE]
+		Turn on if you want to enable the render-on-demand feature for grid.
+		It improves the performance for huge grids.
+		Default: false
+	-->
+	<library-property>
+		<name>org.zkoss.zul.grid.rod</name>
+		<value>true</value>
+	</library-property>
+	
+	<!-- [ZK EE]
+		Turn on if you want to enable the render-on-demand feature for listbox.
+		It improves the performance for huge listboxes.
+		Default: false
+	-->
+	<library-property>
+		<name>org.zkoss.zul.listbox.rod</name>
+		<value>true</value>
+	</library-property>
+	
+	<!-- Uncommet to control the encoding of the label properties files Default: UTF-8 -->
+	<library-property>
+		<name>org.zkoss.util.label.web.charset</name>
+		<value>UTF-8</value>
+	</library-property>
+	
+	<library-property>
+		<name>org.zkoss.util.label.classpath.charset</name>
+		<value>UTF-8</value>
+	</library-property>	
+	
+	<!-- optional, Map the url pattern for WebSocket connection; 
+	     if this library property is not configured, /zkwm will be used by default -->
+	<library-property>
+	    <name>org.zkoss.zkmax.au.websocket.WebSocketEndPoint.urlPattern</name>
+	    <value>/softbsws/</value>
+	</library-property>
+	
+	<!-- Configure ZUL not to override the standard HTML tags, such as body's margin and padding
+	<library-property>
+		<name>org.zkoss.zul.theme.browserDefault</name>
+		<value>true</value>
+	</library-property>
+	-->
+	
+	<!-- InaccessibleWidgetBlockService is availalble in ZK EE, If you want to block particular events -->
+	<!-- 
+	<library-property>
+		<name>org.zkoss.zkmax.au.IWBS.events</name>
+		<value>onClick,onChange,onSelect</value>
+	</library-property>
+	 -->
+	 
+	<!-- For development, disable various caches to avoid server restarts -->
+	<library-property>
+		<name>org.zkoss.zk.ZUML.cache</name>
+		<value>true</value>
+	</library-property>	
+	<library-property>
+		<name>org.zkoss.zk.WPD.cache</name>
+		<value>true</value>
+	</library-property>	
+	<library-property>
+		<name>org.zkoss.zk.WCS.cache</name>
+		<value>true</value>
+	</library-property>	
+	<library-property>
+		<name>org.zkoss.web.classWebResource.cache</name>
+		<value>true</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.util.label.cache</name>
+		<value>true</value>
+	</library-property>
+	<!--  -->
+	
+	<!-- enable for debugging MVVM commands and binding (very verbose) -->	
+	<library-property>
+		<name>org.zkoss.bind.DebuggerFactory.enable</name>
+		<value>false</value>
+	</library-property>
+
+</zk>

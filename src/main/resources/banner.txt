@@ -1,0 +1,7 @@
+application.version=1.0.1
+application.formatted-version=V1.0.1
+spring-boot.version=2.1.13.RELEASE
+spring-boot.formatted-version=v2.1.13.RELEASE
+zkoss.version=9.0.0
+logback.version=1.2.3
+application.title=SoftLynx Business Suite

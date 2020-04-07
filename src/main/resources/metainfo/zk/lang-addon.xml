@@ -1,0 +1,16 @@
+<language-addon>
+	<addon-name>soft-addon</addon-name>
+	<version>1.0</version>
+	<language-name>xul/html</language-name>
+	
+	<depends>zkmax</depends>
+	
+	<!-- 
+	<version>
+		<version-class>org.zkoss.zkmax.Version</version-class>
+		<version-uid>8.6.0.1</version-uid>
+		<zk-version>8.6.0.1</zk-version>
+	</version>
+	<javascript package="zkmax" merge="true" />
+	 -->
+</language-addon>

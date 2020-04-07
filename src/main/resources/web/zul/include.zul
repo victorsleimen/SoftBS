@@ -1,0 +1,22 @@
+<?page session="false"?>
+<?page import="org.apache.shiro.SecurityUtils"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?taglib uri="http://www.springframework.org/tags" prefix="spring"?>
+<?taglib uri="http://www.springframework.org/tags/form" prefix="form"?>
+<?taglib uri="http://shiro.apache.org/tags" prefix="shiro"?>
+<?taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"?>
+<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
+
+
+<zk>
+	<div if="${sec:isAllGranted('ROLE_SUPERVISOR')}">
+		This div and all child components are only displayed for user with the SUPERVISOR ROLE
+		<listbox ... />
+	</div>
+
+	<button if="${sec:isAnyGranted('ROLE_TELLER,ROLE_ACCOUNTANT')}" label="For TELLERs and ACCOUNTANTs only">
+		<zk if="${sec:isNoneGranted('ROLE_TRAINEE,ROLE_ROOKIE')}">
+			TRAINEES and ROOKIES won't see this.
+		</zk>
+	</button>
+</zk>

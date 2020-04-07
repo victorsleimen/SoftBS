@@ -21,8 +21,7 @@
 		 where id=#{id}
 	</update>
 
-	<delete id="deleteUserByUsername"
-		parameterType="java.lang.String">
+	<delete id="deleteUserByUsername" parameterType="java.lang.String">
 		delete
 		  from users
 		 where username=#{username}

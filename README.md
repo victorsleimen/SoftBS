@@ -27,8 +27,8 @@ Open new cmd window on the project location and run the following:
 > mvn clean install
  
 # To prepare the image with a name
-> docker build -t jcgassignment 
+> docker build -t softbs 
 
 # Starting the Docker container
-docker run -d -p 9099:9099 jcgassignment
+docker run -d -p 9099:9099 softbs
 

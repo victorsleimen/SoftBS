@@ -10,6 +10,6 @@ VOLUME /tmp
  
 # Steps to run the spring boot application
 # Copy the application’s jar from target directory and name it
-ADD ./target/SpringbootOnDocker.jar bs-0.0.1-SNAPSHOT.jar
+ADD ./target/SoftBSDocker.jar bs-0.0.1-SNAPSHOT.jar
 RUN sh -c 'touch /bs-0.0.1-SNAPSHOT.jar'
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/bs-0.0.1-SNAPSHOT.jar"]

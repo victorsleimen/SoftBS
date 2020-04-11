@@ -29,7 +29,7 @@ public class LoginController {
 		mav.setViewName(view);
 		return mav;
 	}
-	
+
 	@PostMapping("/error")
 	public String softError() {
 		return "error";

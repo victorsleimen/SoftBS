@@ -12,20 +12,20 @@
 				</row>
 				<row>
 					<label value="${labels.lgn.username}" />
-					<textbox name="username" placeholder="Enter your username" inplace="true" tabindex="0" constraint="no empty: Enter your username" focus="true" />
+					<textbox id="iusername" name="username" placeholder="Enter your username" inplace="true" tabindex="0" constraint="no empty: Enter your username" focus="true" />
 				</row>
 				<row>
 					<label value="${labels.lgn.password}" />
-					<textbox type="password" placeholder="Enter your password" name="password" inplace="true" constraint="no empty: Fill your password" />
+					<textbox type="password" id="ipassword" placeholder="Enter your password" name="password" inplace="true" constraint="no empty: Fill your password" />
 				</row>
 				<row>
 					<label value="${labels.lgn.rememberme}" />
-					<checkbox id="rememberMe" name="remember_me" style="align:left;" checked="true" />
+					<checkbox id="irememberMe" name="remember_me" style="align:left;" checked="true" />
 				</row>
 				<row spans="2" align="right">
 					<hlayout>
-						<button type="reset" label="${labels.lgn.reset}" />
-						<button type="submit" label="${labels.lgn.login}" />
+						<button type="reset" id="ireset" label="${labels.lgn.reset}" />
+						<button type="submit" id="isubmit" label="${labels.lgn.login}" />
 					</hlayout>
 				</row>
 			</rows>

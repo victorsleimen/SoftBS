@@ -1,5 +1,5 @@
 <?page title="Soft Business Suite" contentType="text/html;charset=UTF-8"?>
-<zk xmlns:n="native" xmlns:w="client" xmlns:sh="shadow">
+<zk xmlns:n="native" xmlns:h="xhtml" xmlns:w="client" xmlns:sh="shadow">
 	<borderlayout hflex="1" vflex="1">
 		<north height="45px" border="none">
 			<sh:apply templateURI="~./zul/banner.zul" />

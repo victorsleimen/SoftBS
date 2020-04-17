@@ -41,5 +41,5 @@ public class LoginController {
 	public String softError() {
 		return "error";
 	}
-
+	
 }

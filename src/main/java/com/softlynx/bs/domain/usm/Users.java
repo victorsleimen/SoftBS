@@ -6,14 +6,11 @@ import lombok.Data;
 
 @Data
 @Alias("users")
-public class Users {// implements UserDetails {
+public class Users {
 
 	private String username;
 	private String password;
 	private String authority;
-	private int accountNonExpired;
-	private int accountNonLocked;
-	private int credentialsNonExpired;
 	private int enabled;
 
 	public String getUsername() {
@@ -38,30 +35,6 @@ public class Users {// implements UserDetails {
 
 	public void setAuthority(String authority) {
 		this.authority = authority;
-	}
-
-	public int getAccountNonExpired() {
-		return accountNonExpired;
-	}
-
-	public void setAccountNonExpired(int accountNonExpired) {
-		this.accountNonExpired = accountNonExpired;
-	}
-
-	public int getAccountNonLocked() {
-		return accountNonLocked;
-	}
-
-	public void setAccountNonLocked(int accountNonLocked) {
-		this.accountNonLocked = accountNonLocked;
-	}
-
-	public int getCredentialsNonExpired() {
-		return credentialsNonExpired;
-	}
-
-	public void setCredentialsNonExpired(int credentialsNonExpired) {
-		this.credentialsNonExpired = credentialsNonExpired;
 	}
 
 	public int getEnabled() {

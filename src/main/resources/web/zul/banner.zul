@@ -4,6 +4,6 @@
 	</a>
 	<hbox hflex="1" pack="end" align="end">
 		<a style="color:blue; font-weight:bold;">${loggedUser}</a>
-		<a href="/logout">logout</a>
+		<a style="color:red;" href="/logout">logout</a>
 	</hbox>
 </hbox>

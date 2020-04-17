@@ -17,7 +17,7 @@
 				</row>
 				<row>
 					<label value="${labels.lgn.password}" />
-					<textbox type="password" id="ipassword" placeholder="Enter your password" name="password" inplace="true" constraint="no empty: Fill your password" />
+					<textbox type="password" id="ipassword" name="password" placeholder="Enter your password" inplace="true" constraint="no empty: Fill your password" />
 				</row>
 				<row>
 					<label value="${labels.lgn.rememberme}" />

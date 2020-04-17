@@ -18,14 +18,21 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	@PostMapping("/openDesktop")
+	@PostMapping({"/login"})
 	public ModelAndView loginDesktopApps(@RequestParam final String username) throws Exception {
 
+		String view, message = null;
 		log.debug("[UserController] - loginDesktopApps().....................");
 		System.out.println("username =================== " + username);
-		String view = (loginService.ifUserExists(username) > 0) ? "DesktopApps" : "login";
+		if (loginService.ifUserExists(username) > 0) {
+			view = "secure/DesktopApps";
+		}else {
+			view = "login";
+			message = "User does not exists";
+		}
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("loggedUser", username);
+		mav.addObject("loginMessage", message);
 		mav.setViewName(view);
 		return mav;
 	}

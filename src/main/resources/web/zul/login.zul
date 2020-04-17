@@ -1,5 +1,6 @@
-<zk xmlns:n="native" xmlns:w="client">
-	<n:form action="/openDesktop" method="POST"
+<?link rel="stylesheet" type="text/css" href="css/sanitize.css"?>
+<zk xmlns:n="native" xmlns:h="xhtml">
+	<n:form action="/login" method="POST"
 		style="margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 		<grid width="488px">
 			<columns>

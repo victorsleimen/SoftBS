@@ -1,11 +1,13 @@
+<?link rel="stylesheet" type="text/css" href="css/sanitize.css"?>
 <?page session="false"?>
 <?page import="org.apache.shiro.SecurityUtils"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
 <?taglib uri="http://www.springframework.org/tags" prefix="spring"?>
 <?taglib uri="http://www.springframework.org/tags/form" prefix="form"?>
 <?taglib uri="http://shiro.apache.org/tags" prefix="shiro"?>
 <?taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"?>
-<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
 
 
 <zk>

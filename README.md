@@ -6,6 +6,8 @@ SoftBS Repository contains a startup java web application build using the follow
  - LogBack is used as Logging framework
  - HikariCP is used for the data source connection, it is registered under name "SoftBSHikariCP" 
 
+You can run the example using the HSQL in-memory database, MariaDB or MySQLL: Just adjust the correspondent variables in the application.properties
+
 According to my experience, the best practice to use my application is to respect the order of the business flow: [REST]Controller-->Service-->Repository-->Mapper (either use of @Query("sqlstatement") in Java maaperinterface or by calling queries from XML file) using java domain classes as POJOs where each is reflecting a database table.
 
 This can allow you to manage many application in one suite thru REST calls, where services do access data from another module via repositories (Best Practice).

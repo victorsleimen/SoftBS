@@ -1,12 +1,12 @@
 SoftBS Repository contains a startup java web application build using the following: 
  - Spring Boot v2.1.13
  - Mybatis 3 as ORM framework
- - Bootstrap4 with ZKOSS v8.6.0.1 as front end (view layer). 
+ - Bootstrap4 with ZKOSS v9.0.0 as front end (view layer). 
  - Security framework to be added later: it can be Spring Security, JMT or Apache Shiro
  - LogBack is used as Logging framework
  - HikariCP is used for the data source connection, it is registered under name "SoftBSHikariCP" 
 
-According to my experience, the best practice to use my application is to respect the order of the business flow: [REST]Controller-->Service-->Repository-->Mapper (domain as POJO).
+According to my experience, the best practice to use my application is to respect the order of the business flow: [REST]Controller-->Service-->Repository-->Mapper (either use of @Query("sqlstatement") in Java maaperinterface or by calling queries from XML file) using java domain classes as POJOs where each is reflecting a database table.
 This can allow you to manage many application in one suite thru REST calls, where services do access data from another module via repositories.
 
 application.properties hold configuration related to all frameworks (Spring, Mybatis, Hikari..)

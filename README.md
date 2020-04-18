@@ -7,18 +7,22 @@ SoftBS Repository contains a startup java web application build using the follow
  - HikariCP is used for the data source connection, it is registered under name "SoftBSHikariCP" 
 
 According to my experience, the best practice to use my application is to respect the order of the business flow: [REST]Controller-->Service-->Repository-->Mapper (either use of @Query("sqlstatement") in Java maaperinterface or by calling queries from XML file) using java domain classes as POJOs where each is reflecting a database table.
-This can allow you to manage many application in one suite thru REST calls, where services do access data from another module via repositories.
+
+This can allow you to manage many application in one suite thru REST calls, where services do access data from another module via repositories (Best Practice).
 
 application.properties hold configuration related to all frameworks (Spring, Mybatis, Hikari..)
-bootstrap.properties is also available for additional configuration properties
-zk.xml & lang-addon.xml holds ZK framework configuration properties.
-Logback.xml hold logging configuration for the whole framework: any additional package or API added should be configured here.
-Translation is also available by adding properties into the correspondent zk-label_xx.properties file.
-Any template engine like Apache FreeMarker, Groovy or Thymeleaf can be used.
-Also, Bootstrap v4 along with ZK native language can be used to draw zul file.
 
-SoftLynx logo is a trademark for my company and it cannot be used in any project. 
-You can replace your own logo and use freely the application.
+zk.xml & lang-addon.xml holds ZK framework configuration properties.
+
+Logback.xml hold logging configuration for the whole framework: any additional package or API added should be configured here.
+
+Translation is also available by adding properties into the correspondent zk-label_xx.properties file.
+
+Any template engine like Apache FreeMarker, Groovy or Thymeleaf can be used.
+
+Also, consider using Bootstrap v4 along with ZK native language for optimal memory consumption when drawing your zul file.
+
+SoftLynx logo is a trademark for my company and it cannot be used in any project. You can replace your own logo and use freely the application.
 
 # Docker Image:
 ---------------

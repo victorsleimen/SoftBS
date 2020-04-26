@@ -1,7 +1,7 @@
 SoftBS Repository contains a startup java web application build using the following: 
  - Spring Boot v2.1.13
  - Mybatis 3 as ORM framework
- - Bootstrap4 with ZKOSS v9.0.0 as front end (view layer). 
+ - Bootstrap4 with ZKOSS v9.0.1 as front end (view layer). 
  - Security framework to be added later: it can be Spring Security, JMT or Apache Shiro
  - LogBack is used as Logging framework
  - HikariCP is used for the data source connection, it is registered under name "SoftBSHikariCP" 

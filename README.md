@@ -5,6 +5,7 @@ SoftBS Repository contains a startup java web application build using the follow
  - Security framework to be added later: it can be Spring Security, JMT or Apache Shiro
  - LogBack is used as Logging framework
  - HikariCP is used for the data source connection, it is registered under name "SoftBSHikariCP" 
+ - Jacoco Code Coverage
 
 You can run the example using the HSQL in-memory database, MariaDB or MySQLL: Just adjust the correspondent variables in the application.properties
 
